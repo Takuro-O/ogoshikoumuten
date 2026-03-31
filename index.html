@@ -431,177 +431,95 @@
 
 
     /* ===== CONTACT ===== */
-    #contact { background: var(--white); }
+    #contact {
+      background: var(--cream);
+    }
     .contact-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem; margin-top: 4rem;
+      display: grid; grid-template-columns: 1fr 1.4fr;
+      gap: 4rem; margin-top: 4rem; align-items: start;
     }
-    .contact-info h3 {
-      font-size: 1.3rem; color: var(--wood-dark);
-      margin-bottom: 1.5rem;
-    }
-    .contact-detail {
-      display: flex; gap: 1rem; padding: 1rem 0;
-      border-bottom: 1px solid var(--wood-pale);
-      align-items: flex-start;
-    }
-    .contact-detail:last-of-type { border-bottom: none; }
-    .contact-detail dt {
-      font-size: 0.75rem; color: var(--text-light);
-      letter-spacing: 0.12em; min-width: 60px; padding-top: 0.1rem;
-    }
-    .contact-detail dd {
-      font-size: 0.92rem; color: var(--text-dark); line-height: 1.7;
-    }
-    .contact-detail a { color: var(--accent); text-decoration: none; }
-    .tel-large {
-      font-size: 1.8rem; font-weight: 300;
-      color: var(--wood-dark); letter-spacing: 0.05em;
-      text-decoration: none; display: block;
-    }
-    .tel-large:hover { color: var(--accent); }
-    .tel-note { color: var(--text-light); font-size: 0.78rem; display: block; margin-top: 0.2rem; }
 
-    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
-    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-    .form-group label {
-      font-size: 0.78rem; color: var(--text-mid);
-      letter-spacing: 0.1em;
+    /* 左：電話カード */
+    .contact-info {
+      display: flex; flex-direction: column; gap: 1.2rem;
     }
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      padding: 0.8rem 1rem;
-      border: 1px solid var(--wood-pale);
-      border-radius: 2px; background: var(--cream);
-      font-size: 0.88rem; color: var(--text-dark);
-      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
-      -webkit-appearance: none;
-    }
-    .form-group input:focus-visible,
-    .form-group textarea:focus-visible,
-    .form-group select:focus-visible {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(201,125,58,0.25);
-    }
-    /* グローバルフォーカスリング */
-    :focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
-    .form-group textarea { min-height: 120px; resize: vertical; }
-    .form-submit {
-      background: var(--wood-dark); color: var(--white);
-      border: none; padding: 1rem; font-size: 0.88rem;
-      letter-spacing: 0.2em; cursor: pointer;
-      border-radius: 2px; transition: background 0.2s;
-    }
-    .form-submit:hover { background: var(--wood-mid); }
-
-
-    /* ===== INSTAGRAM BANNER ===== */
-    #instagram-banner {
+    .contact-tel-card {
       background: var(--wood-dark);
-      padding: 80px 8%;
+      border-radius: 4px;
+      padding: 2rem 1.8rem;
+      display: flex; flex-direction: column; gap: 0.5rem;
     }
-    .insta-inner {
-      display: flex;
-      align-items: center;
-      gap: 5rem;
-      max-width: 1100px;
-      margin: 0 auto;
+    .contact-tel-label {
+      font-size: 0.68rem; letter-spacing: 0.25em;
+      color: var(--wood-light); text-transform: uppercase;
     }
-    .insta-text { flex: 1; }
-    .insta-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.3em;
-      color: var(--wood-light);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
+    .tel-large {
+      font-size: 1.9rem; font-weight: 300;
+      color: var(--white); letter-spacing: 0.05em;
+      text-decoration: none; display: block;
+      transition: color 0.2s;
     }
-    .insta-title {
-      font-family: 'Noto Serif JP', serif;
-      font-size: clamp(1.4rem, 2.5vw, 2rem);
-      font-weight: 600;
-      color: var(--white);
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-      letter-spacing: 0.04em;
+    .tel-large:hover { color: var(--wood-pale); }
+    .tel-note {
+      font-size: 0.75rem; color: rgba(255,255,255,0.5);
+      display: block;
     }
-    .insta-desc {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 2;
-      margin-bottom: 2rem;
-      max-width: 420px;
+    .tel-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      background: var(--accent); color: var(--white);
+      text-decoration: none; padding: 0.75rem 1.5rem;
+      border-radius: 2px; font-size: 0.82rem;
+      letter-spacing: 0.12em;
+      transition: background 0.2s, transform 0.2s;
     }
-    .insta-btn {
-      display: inline-flex;
-      align-items: center;
-      background: linear-gradient(135deg, #E1306C, #C13584, #833AB4);
-      color: var(--white);
-      text-decoration: none;
-      padding: 0.9rem 2rem;
-      border-radius: 3px;
-      font-size: 0.88rem;
-      letter-spacing: 0.1em;
-      font-family: 'Noto Serif JP', serif;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-    .insta-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+    .tel-btn:hover { background: var(--wood-light); transform: translateY(-1px); }
 
-    /* Phone mock */
-    .insta-visual { flex-shrink: 0; }
-    .insta-phone {
-      width: 200px;
-      background: #1a1a2e;
-      border-radius: 30px;
-      padding: 16px 12px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      border: 2px solid rgba(255,255,255,0.08);
-    }
-    .insta-phone-screen {
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      padding: 14px 10px;
-    }
-    .insta-profile {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-    .insta-avatar {
-      width: 40px; height: 40px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #E1306C, #833AB4);
-      color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1rem; font-weight: 700;
-      flex-shrink: 0;
-    }
-    .insta-username { font-size: 0.7rem; font-weight: 700; color: #111; }
-    .insta-name { font-size: 0.6rem; color: #888; }
-    .insta-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+    .contact-meta {
+      background: var(--white);
       border-radius: 4px;
       overflow: hidden;
     }
-    .insta-thumb {
-      aspect-ratio: 1;
-      opacity: 0.85;
+    .contact-meta-item {
+      display: flex; gap: 1rem; padding: 1rem 1.2rem;
+      border-bottom: 1px solid var(--wood-pale);
+      align-items: flex-start;
+    }
+    .contact-meta-item:last-child { border-bottom: none; }
+    .contact-meta-item dt {
+      font-size: 0.72rem; color: var(--text-light);
+      letter-spacing: 0.12em; min-width: 52px;
+      padding-top: 0.15rem; flex-shrink: 0;
+    }
+    .contact-meta-item dd {
+      font-size: 0.88rem; color: var(--text-dark); line-height: 1.7;
+    }
+
+    /* 右：フォームエリア */
+    .contact-form-wrap {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2rem;
+      box-shadow: 0 4px 24px rgba(74,49,32,0.07);
+    }
+    .contact-form-label {
+      font-size: 0.68rem; letter-spacing: 0.25em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .contact-form-title {
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--wood-dark); margin-bottom: 1.5rem;
+      letter-spacing: 0.04em;
     }
 
     @media (max-width: 900px) {
-      .insta-inner { flex-direction: column; gap: 3rem; text-align: center; }
-      .insta-desc { margin: 0 auto 2rem; }
-      .insta-btn { margin: 0 auto; }
-      .features-grid { grid-template-columns: repeat(2, 1fr); }
-      .insta-phone { width: 160px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 600px) {
+      .tel-large { font-size: 1.4rem; }
+      .contact-form-wrap { padding: 1.2rem; }
     }
 
     /* ===== FOOTER ===== */
@@ -952,46 +870,54 @@
 
   <!-- CONTACT -->
   <section id="contact" aria-labelledby="contact-heading">
+    <p class="section-label reveal">CONTACT</p>
     <h2 id="contact-heading" class="section-title reveal reveal-delay-1">お問い合わせ</h2>
     <div class="divider reveal reveal-delay-2" aria-hidden="true"></div>
-    <p class="section-desc reveal reveal-delay-2">住まいのご相談は、お気軽にお問い合わせください。<br>お電話・フォームどちらでもお受けしております。</p>
+    <p class="section-desc reveal reveal-delay-2">住まいのご相談は、お気軽にどうぞ。<br>お電話・フォームどちらでもお受けしております。</p>
 
     <div class="contact-grid">
+
+      <!-- 左：電話・住所 -->
       <div class="contact-info reveal">
-        <h3>お電話でのお問い合わせ</h3>
-        <dl>
-          <div class="contact-detail">
-            <dt>TEL</dt>
-            <dd>
-              <a href="tel:0854823369" class="tel-large">0854-82-3369</a>
-              <small class="tel-note">平日 8:00〜17:00</small>
-            </dd>
-          </div>
-          <div class="contact-detail">
+        <div class="contact-tel-card">
+          <span class="contact-tel-label">Phone</span>
+          <a href="tel:0854823369" class="tel-large">0854-82-3369</a>
+          <span class="tel-note">平日 8:00〜17:00</span>
+          <a href="tel:0854823369" class="tel-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.58a1 1 0 01-.24 1.01L6.62 10.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            今すぐ電話する
+          </a>
+        </div>
+        <div class="contact-meta">
+          <div class="contact-meta-item">
             <dt>住所</dt>
             <dd>〒694-0041<br>島根県大田市長久町長久ハ23-1</dd>
           </div>
-          <div class="contact-detail">
+          <div class="contact-meta-item">
             <dt>アクセス</dt>
             <dd>JR大田市駅より徒歩約8分</dd>
           </div>
-        </dl>
+        </div>
       </div>
 
-      <div class="reveal reveal-delay-1">
+      <!-- 右：Googleフォーム -->
+      <div class="contact-form-wrap reveal reveal-delay-1">
+        <p class="contact-form-label">Online Form</p>
+        <p class="contact-form-title">フォームでのお問い合わせ</p>
         <iframe
           src="https://docs.google.com/forms/d/e/1FAIpQLSfYMCI2UmmSZ7j2pNSJk8FaHHY0z0m1EUSwMGMvAgdRp1jBFQ/viewform?embedded=true"
           width="100%"
-          height="820"
+          height="780"
           frameborder="0"
           marginheight="0"
           marginwidth="0"
-          style="border:none; border-radius:2px;"
+          style="border:none;"
           title="お問い合わせフォーム"
           loading="lazy">
           読み込んでいます…
         </iframe>
       </div>
+
     </div>
   </section>
 
