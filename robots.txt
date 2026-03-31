@@ -1,0 +1,6 @@
+# robots.txt — 有限会社生越工務店
+User-agent: *
+Allow: /
+
+# サイトマップの場所を明示
+Sitemap: https://ogoshi-koumuten.jp/sitemap.xml
