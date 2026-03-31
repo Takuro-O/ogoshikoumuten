@@ -11,7 +11,6 @@
   <meta property="og:description" content="昭和42年創業。地域に根差した木造住宅の設計・施工、リフォーム・増改築を承ります。">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ja_JP">
-  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="canonical" href="https://ogoshi-koumuten.jp/">
   <meta name="theme-color" content="#4a3120">
 
@@ -976,52 +975,22 @@
             <dt>アクセス</dt>
             <dd>JR大田市駅より徒歩約8分</dd>
           </div>
-          <div class="contact-detail">
-            <dt>SNS</dt>
-            <dd>
-              <a href="https://www.instagram.com/ogoshikoumuten" target="_blank" rel="noopener noreferrer">
-                📷 Instagram @ogoshikoumuten
-              </a>
-            </dd>
-          </div>
         </dl>
       </div>
 
       <div class="reveal reveal-delay-1">
-        <form class="contact-form" action="https://formsubmit.co/info@ogoshi-koumuten.jp" method="POST" onsubmit="handleSubmit(event)">
-          <input type="hidden" name="_subject" value="お問い合わせ（生越工務店ホームページ）">
-          <input type="hidden" name="_next" value="https://ogoshi-koumuten.jp/thanks.html">
-          <input type="hidden" name="_captcha" value="true">
-          <!-- ハニーポット: ボットはここに入力するが人間は見えない -->
-          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-          <div class="form-group">
-            <label for="name">お名前 <span style="color:var(--accent)" aria-hidden="true">*</span></label>
-            <input type="text" id="name" name="name" placeholder="山田 太郎" required>
-          </div>
-          <div class="form-group">
-            <label for="phone">電話番号</label>
-            <input type="tel" id="phone" name="phone" placeholder="0854-00-0000">
-          </div>
-          <div class="form-group">
-            <label for="email">メールアドレス <span style="color:var(--accent)" aria-hidden="true">*</span></label>
-            <input type="email" id="email" name="email" placeholder="sample@example.com" required>
-          </div>
-          <div class="form-group">
-            <label for="category">お問い合わせ種別</label>
-            <select id="category" name="category">
-              <option value="">選択してください</option>
-              <option value="newbuild">新築住宅について</option>
-              <option value="reform">リフォーム・増改築について</option>
-              <option value="skylight">スカイライトチューブについて</option>
-              <option value="other">その他</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">お問い合わせ内容 <span style="color:var(--accent)" aria-hidden="true">*</span></label>
-            <textarea id="message" name="message" placeholder="ご質問・ご要望をご記入ください" required></textarea>
-          </div>
-          <button type="submit" class="form-submit">送 信 す る</button>
-        </form>
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSfYMCI2UmmSZ7j2pNSJk8FaHHY0z0m1EUSwMGMvAgdRp1jBFQ/viewform?embedded=true"
+          width="100%"
+          height="820"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          style="border:none; border-radius:2px;"
+          title="お問い合わせフォーム"
+          loading="lazy">
+          読み込んでいます…
+        </iframe>
       </div>
     </div>
   </section>
@@ -1063,10 +1032,7 @@
     </div>
     <div class="footer-bottom">
       <span>© 2026 有限会社生越工務店. All Rights Reserved.</span>
-      <div class="footer-snslink">
-        <a href="https://www.instagram.com/ogoshikoumuten" target="_blank" rel="noopener noreferrer">インスタグラム</a>
       </div>
-    </div>
   </footer>
 
   <script>
@@ -1108,50 +1074,6 @@
     reveals.forEach(el => observer.observe(el));
 
     // Form submit — FormSubmit AJAX エンドポイント経由で実際に送信する
-    async function handleSubmit(e) {
-      e.preventDefault();
-      const form = e.target;
-      const btn  = form.querySelector('.form-submit');
-
-      btn.textContent = '送信中…';
-      btn.disabled = true;
-
-      try {
-        const res = await fetch('https://formsubmit.co/ajax/info@ogoshi-koumuten.jp', {
-          method:  'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            name:     form.name.value,
-            phone:    form.phone.value,
-            email:    form.email.value,
-            category: form.category.value,
-            message:  form.message.value,
-            _subject: 'お問い合わせ（生越工務店ホームページ）',
-          }),
-        });
-
-        if (res.ok) {
-          btn.textContent = '送信しました ✓';
-          btn.style.background = 'var(--green)';
-          form.reset();
-          setTimeout(() => {
-            btn.textContent = '送 信 す る';
-            btn.style.background = '';
-            btn.disabled = false;
-          }, 4000);
-        } else {
-          throw new Error('送信に失敗しました');
-        }
-      } catch {
-        btn.textContent = 'エラー — もう一度お試しください';
-        btn.style.background = '#b94040';
-        btn.disabled = false;
-        setTimeout(() => {
-          btn.textContent = '送 信 す る';
-          btn.style.background = '';
-        }, 4000);
-      }
-    }
   </script>
 </body>
 </html>
