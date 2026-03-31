@@ -513,6 +513,109 @@
     }
     .form-submit:hover { background: var(--wood-mid); }
 
+
+    /* ===== INSTAGRAM BANNER ===== */
+    #instagram-banner {
+      background: var(--wood-dark);
+      padding: 80px 8%;
+    }
+    .insta-inner {
+      display: flex;
+      align-items: center;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .insta-text { flex: 1; }
+    .insta-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      color: var(--wood-light);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .insta-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+    .insta-desc {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 2;
+      margin-bottom: 2rem;
+      max-width: 420px;
+    }
+    .insta-btn {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, #E1306C, #C13584, #833AB4);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.9rem 2rem;
+      border-radius: 3px;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      font-family: 'Noto Serif JP', serif;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .insta-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+
+    /* Phone mock */
+    .insta-visual { flex-shrink: 0; }
+    .insta-phone {
+      width: 200px;
+      background: #1a1a2e;
+      border-radius: 30px;
+      padding: 16px 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      border: 2px solid rgba(255,255,255,0.08);
+    }
+    .insta-phone-screen {
+      background: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 14px 10px;
+    }
+    .insta-profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .insta-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #E1306C, #833AB4);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .insta-username { font-size: 0.7rem; font-weight: 700; color: #111; }
+    .insta-name { font-size: 0.6rem; color: #888; }
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .insta-thumb {
+      aspect-ratio: 1;
+      opacity: 0.85;
+    }
+
+    @media (max-width: 900px) {
+      .insta-inner { flex-direction: column; gap: 3rem; text-align: center; }
+      .insta-desc { margin: 0 auto 2rem; }
+      .insta-btn { margin: 0 auto; }
+    }
+
     /* ===== FOOTER ===== */
     footer {
       background: var(--wood-dark); color: rgba(255,255,255,0.75);
@@ -913,6 +1016,43 @@
   </section>
 
   </main><!-- /main -->
+
+  <!-- INSTAGRAM BANNER -->
+  <section id="instagram-banner">
+    <div class="insta-inner">
+      <div class="insta-text">
+        <p class="insta-label">FOLLOW US</p>
+        <h2 class="insta-title">施工の様子をInstagramで<br>発信しています</h2>
+        <p class="insta-desc">大田市の住まいづくりの現場や完成事例など、日々の仕事の様子をInstagramで公開しています。ぜひフォローください。</p>
+        <a href="https://www.instagram.com/ogoshikoumuten" target="_blank" rel="noopener noreferrer" class="insta-btn">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;margin-right:0.5rem"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>
+          @ogoshikoumuten をフォローする
+        </a>
+      </div>
+      <div class="insta-visual">
+        <div class="insta-phone">
+          <div class="insta-phone-screen">
+            <div class="insta-profile">
+              <div class="insta-avatar">生</div>
+              <div>
+                <div class="insta-username">ogoshikoumuten</div>
+                <div class="insta-name">有限会社 生越工務店</div>
+              </div>
+            </div>
+            <div class="insta-grid">
+              <div class="insta-thumb" style="background:#c8a882;"></div>
+              <div class="insta-thumb" style="background:#8fa888;"></div>
+              <div class="insta-thumb" style="background:#b89470;"></div>
+              <div class="insta-thumb" style="background:#7a8a70;"></div>
+              <div class="insta-thumb" style="background:#d4b896;"></div>
+              <div class="insta-thumb" style="background:#9aaa90;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- FOOTER -->
   <footer>
