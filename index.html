@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>有限会社生越工務店｜島根県大田市の工務店</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --wood-dark:   #4a3120;
+      --wood-mid:    #7a5230;
+      --wood-light:  #b8895a;
+      --wood-pale:   #e8d5b7;
+      --cream:       #faf6ef;
+      --white:       #ffffff;
+      --text-dark:   #2b1f12;
+      --text-mid:    #5a4430;
+      --text-light:  #8a7060;
+      --green:       #4a6741;
+      --green-light: #6a8e5e;
+      --accent:      #c97d3a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Serif JP', serif;
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(250,246,239,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--wood-pale);
+      padding: 0 5%;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 70px;
+      transition: box-shadow 0.3s;
+    }
+    header.scrolled { box-shadow: 0 2px 20px rgba(74,49,32,0.12); }
+
+    .logo {
+      display: flex; flex-direction: column; line-height: 1.1;
+    }
+    .logo-main {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--wood-dark);
+      letter-spacing: 0.08em;
+    }
+    .logo-sub {
+      font-size: 0.62rem; color: var(--text-light);
+      letter-spacing: 0.15em;
+    }
+
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a {
+      font-size: 0.82rem; color: var(--text-mid);
+      text-decoration: none; letter-spacing: 0.1em;
+      position: relative; padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    nav a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1px; background: var(--accent);
+      transition: width 0.3s;
+    }
+    nav a:hover { color: var(--wood-dark); }
+    nav a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--wood-dark); color: var(--white) !important;
+      padding: 0.45rem 1.2rem; border-radius: 2px;
+      font-size: 0.78rem !important; letter-spacing: 0.12em !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--wood-mid) !important; }
+
+    /* hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 5px; background: none; border: none;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--wood-dark); transition: all 0.3s;
+    }
+
+    /* mobile nav */
+    .mobile-nav {
+      display: none; position: fixed; top: 70px; left: 0; right: 0;
+      background: var(--cream); border-bottom: 1px solid var(--wood-pale);
+      flex-direction: column; padding: 1.5rem 5%;
+      z-index: 99; gap: 1rem;
+      box-shadow: 0 4px 20px rgba(74,49,32,0.1);
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: var(--text-dark); text-decoration: none;
+      font-size: 0.95rem; letter-spacing: 0.1em;
+      padding: 0.5rem 0; border-bottom: 1px solid var(--wood-pale);
+    }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      background:
+        linear-gradient(160deg, rgba(74,49,32,0.72) 0%, rgba(122,82,48,0.45) 50%, rgba(74,49,32,0.65) 100%),
+        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80') center/cover no-repeat;
+      display: flex; align-items: center;
+      padding: 120px 8% 80px;
+      position: relative; overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 30 Q15 0 30 30 Q45 60 60 30' stroke='rgba(255,255,255,0.04)' fill='none' stroke-width='1'/%3E%3C/svg%3E") repeat;
+      opacity: 0.5;
+    }
+
+    .hero-inner { position: relative; max-width: 700px; }
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.72rem; letter-spacing: 0.25em;
+      color: var(--wood-pale); border: 1px solid rgba(232,213,183,0.4);
+      padding: 0.35rem 1rem; margin-bottom: 1.8rem;
+      text-transform: uppercase;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      font-weight: 300; color: var(--white);
+      line-height: 1.5; letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.8s 0.1s ease both;
+    }
+    .hero-title strong { font-weight: 700; color: var(--wood-pale); }
+    .hero-desc {
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      color: rgba(255,255,255,0.82); line-height: 2;
+      margin-bottom: 2.5rem; max-width: 480px;
+      animation: fadeUp 0.8s 0.2s ease both;
+    }
+    .hero-btns {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.3s ease both;
+    }
+    .btn-primary {
+      background: var(--accent); color: var(--white);
+      padding: 0.85rem 2rem; text-decoration: none;
+      font-size: 0.85rem; letter-spacing: 0.15em;
+      border-radius: 2px; transition: background 0.2s, transform 0.2s;
+      font-family: 'Noto Serif JP', serif;
+    }
+    .btn-primary:hover { background: var(--wood-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.6); color: var(--white);
+      padding: 0.85rem 2rem; text-decoration: none;
+      font-size: 0.85rem; letter-spacing: 0.15em;
+      border-radius: 2px; transition: background 0.2s;
+      font-family: 'Noto Serif JP', serif;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      color: rgba(255,255,255,0.6); font-size: 0.68rem; letter-spacing: 0.2em;
+    }
+    .hero-scroll::after {
+      content: ''; display: block; width: 1px; height: 50px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent);
+      animation: scrollLine 1.5s ease infinite;
+    }
+
+    @keyframes scrollLine {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      51% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    /* ===== SECTION BASE ===== */
+    section { padding: 100px 8%; }
+    .section-label {
+      font-size: 0.68rem; letter-spacing: 0.3em;
+      color: var(--accent); text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.6rem, 3vw, 2.3rem);
+      font-weight: 600; color: var(--wood-dark);
+      line-height: 1.5; margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+    .section-desc {
+      color: var(--text-light); line-height: 2;
+      font-size: 0.92rem; max-width: 560px;
+    }
+    .divider {
+      width: 40px; height: 2px;
+      background: var(--accent); margin: 1.2rem 0 2rem;
+    }
+
+    /* ===== FEATURES ===== */
+    #features { background: var(--white); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2.5rem; margin-top: 4rem;
+    }
+    .feature-card {
+      padding: 2.5rem 2rem;
+      border: 1px solid var(--wood-pale);
+      position: relative; overflow: hidden;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      background: var(--cream);
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .feature-card:hover { border-color: var(--wood-light); box-shadow: 0 8px 30px rgba(74,49,32,0.08); }
+    .feature-card:hover::before { transform: scaleX(1); }
+
+    .feature-icon {
+      width: 56px; height: 56px;
+      background: var(--wood-pale); border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.5rem; font-size: 1.6rem;
+    }
+    .feature-card h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.1rem; font-weight: 600;
+      color: var(--wood-dark); margin-bottom: 0.8rem;
+      letter-spacing: 0.06em;
+    }
+    .feature-card p {
+      font-size: 0.85rem; color: var(--text-light);
+      line-height: 1.9;
+    }
+
+    /* ===== SERVICES ===== */
+    #services {
+      background: var(--cream);
+    }
+    .services-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem; margin-top: 4rem; align-items: start;
+    }
+    .service-item {
+      display: flex; gap: 1.5rem;
+      padding: 2rem; background: var(--white);
+      border-left: 3px solid var(--wood-pale);
+      transition: border-color 0.3s, transform 0.3s;
+      margin-bottom: 1.5rem;
+    }
+    .service-item:hover { border-color: var(--accent); transform: translateX(4px); }
+    .service-num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2rem; font-weight: 300;
+      color: var(--wood-pale); line-height: 1;
+      min-width: 48px;
+    }
+    .service-content h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.05rem; font-weight: 600;
+      color: var(--wood-dark); margin-bottom: 0.5rem;
+    }
+    .service-content p {
+      font-size: 0.84rem; color: var(--text-light); line-height: 1.9;
+    }
+
+    .services-image {
+      position: sticky; top: 100px;
+    }
+    .services-image img {
+      width: 100%; border-radius: 2px;
+      box-shadow: 12px 12px 0 var(--wood-pale);
+    }
+    .services-image figcaption {
+      font-size: 0.75rem; color: var(--text-light);
+      margin-top: 1rem; letter-spacing: 0.08em;
+    }
+
+    /* ===== WORKS ===== */
+    #works { background: var(--wood-dark); }
+    #works .section-title { color: var(--white); }
+    #works .section-label { color: var(--wood-light); }
+    #works .section-desc { color: rgba(255,255,255,0.65); }
+    #works .divider { background: var(--wood-light); }
+
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 4rem;
+    }
+    .work-card {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4; border-radius: 2px;
+    }
+    .work-card:first-child { grid-row: span 2; aspect-ratio: auto; }
+    .work-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+    .work-card:hover img { transform: scale(1.05); }
+    .work-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(74,49,32,0.85) 0%, transparent 50%);
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end; padding: 1.5rem;
+    }
+    .work-card:hover .work-overlay { opacity: 1; }
+    .work-overlay span {
+      color: var(--white); font-size: 0.85rem;
+      letter-spacing: 0.1em; font-family: 'Noto Serif JP', serif;
+    }
+
+    /* ===== ABOUT ===== */
+    #about {
+      background: var(--cream);
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-image { position: relative; }
+    .about-image img {
+      width: 100%; border-radius: 2px;
+    }
+    .about-badge {
+      position: absolute; bottom: -2rem; right: -2rem;
+      background: var(--accent); color: var(--white);
+      padding: 1.5rem; text-align: center;
+      min-width: 130px;
+    }
+    .about-badge .num {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 2.5rem; font-weight: 700; line-height: 1;
+    }
+    .about-badge .unit { font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.9; }
+
+    .about-content { padding: 0; }
+    .about-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+    .about-list-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      padding: 1.2rem; background: var(--white);
+      border-radius: 2px;
+    }
+    .about-list-item dt {
+      font-size: 0.78rem; color: var(--text-light);
+      letter-spacing: 0.1em; min-width: 80px; padding-top: 0.15rem;
+    }
+    .about-list-item dd {
+      font-size: 0.88rem; color: var(--text-dark); line-height: 1.7;
+    }
+
+    /* ===== SKYLIGHT ===== */
+    #skylight {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
+      padding: 80px 8%;
+      display: flex; align-items: center; gap: 5rem;
+    }
+    .skylight-icon { font-size: 5rem; flex-shrink: 0; }
+    .skylight-content .section-title { color: var(--white); }
+    .skylight-content .section-label { color: rgba(255,255,255,0.7); }
+    .skylight-content p {
+      color: rgba(255,255,255,0.85); line-height: 2; font-size: 0.92rem;
+      max-width: 560px;
+    }
+
+    /* ===== CONTACT ===== */
+    #contact { background: var(--white); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; margin-top: 4rem;
+    }
+    .contact-info h3 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.3rem; color: var(--wood-dark);
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail {
+      display: flex; gap: 1rem; padding: 1rem 0;
+      border-bottom: 1px solid var(--wood-pale);
+      align-items: flex-start;
+    }
+    .contact-detail:last-of-type { border-bottom: none; }
+    .contact-detail dt {
+      font-size: 0.75rem; color: var(--text-light);
+      letter-spacing: 0.12em; min-width: 60px; padding-top: 0.1rem;
+    }
+    .contact-detail dd {
+      font-size: 0.92rem; color: var(--text-dark); line-height: 1.7;
+    }
+    .contact-detail a { color: var(--accent); text-decoration: none; }
+    .tel-large {
+      font-family: 'Noto Serif JP', serif;
+      font-size: 1.8rem; font-weight: 300;
+      color: var(--wood-dark); letter-spacing: 0.05em;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .form-group label {
+      font-size: 0.78rem; color: var(--text-mid);
+      letter-spacing: 0.1em;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--wood-pale);
+      border-radius: 2px; background: var(--cream);
+      font-family: 'Noto Serif JP', serif;
+      font-size: 0.88rem; color: var(--text-dark);
+      outline: none; transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--accent); }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+    .form-submit {
+      background: var(--wood-dark); color: var(--white);
+      border: none; padding: 1rem; font-size: 0.88rem;
+      letter-spacing: 0.2em; cursor: pointer;
+      font-family: 'Noto Serif JP', serif;
+      border-radius: 2px; transition: background 0.2s;
+    }
+    .form-submit:hover { background: var(--wood-mid); }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--wood-dark); color: rgba(255,255,255,0.75);
+      padding: 60px 8% 30px;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 3rem;
+      padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.12);
+      flex-wrap: wrap;
+    }
+    .footer-brand .logo-main { font-size: 1.2rem; color: var(--white); }
+    .footer-brand .logo-sub { color: rgba(255,255,255,0.5); }
+    .footer-brand p {
+      font-size: 0.82rem; margin-top: 1rem; max-width: 260px;
+      line-height: 1.9; color: rgba(255,255,255,0.55);
+    }
+    .footer-links { display: flex; gap: 4rem; flex-wrap: wrap; }
+    .footer-col h4 {
+      font-size: 0.75rem; letter-spacing: 0.2em;
+      color: var(--wood-light); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .footer-col ul a {
+      font-size: 0.82rem; color: rgba(255,255,255,0.6);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--wood-pale); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 2rem; font-size: 0.72rem;
+      color: rgba(255,255,255,0.35); flex-wrap: wrap; gap: 0.5rem;
+    }
+    .footer-snslink {
+      display: flex; gap: 1rem;
+    }
+    .footer-snslink a {
+      color: rgba(255,255,255,0.5); text-decoration: none;
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      transition: color 0.2s;
+    }
+    .footer-snslink a:hover { color: var(--wood-pale); }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0; transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      section { padding: 70px 6%; }
+
+      nav { display: none; }
+      .hamburger { display: flex; }
+
+      .services-layout { grid-template-columns: 1fr; }
+      .services-image { position: static; margin-top: 1rem; }
+
+      .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .work-card:first-child { grid-row: span 1; aspect-ratio: 3/4; }
+
+      #about {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+      }
+      .about-badge { bottom: -1rem; right: -0.5rem; }
+
+      #skylight { flex-direction: column; gap: 2rem; text-align: center; }
+      .skylight-icon { font-size: 3.5rem; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    @media (max-width: 600px) {
+      #hero { padding: 100px 6% 60px; }
+      section { padding: 60px 5%; }
+
+      .works-grid { grid-template-columns: 1fr; }
+      .work-card:first-child { aspect-ratio: 3/2; }
+
+      .footer-top { flex-direction: column; }
+      .footer-links { gap: 2.5rem; }
+
+      .about-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="mainHeader">
+    <div class="logo">
+      <span class="logo-main">有限会社 生越工務店</span>
+      <span class="logo-sub">昭和42年創業</span>
+    </div>
+    <nav>
+      <a href="#features">特徴</a>
+      <a href="#services">事業内容</a>
+      <a href="#works">施工事例</a>
+      <a href="#about">会社概要</a>
+      <a href="#contact" class="nav-cta">お問い合わせ</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#features" onclick="closeMobileNav()">特徴</a>
+    <a href="#services" onclick="closeMobileNav()">事業内容</a>
+    <a href="#works" onclick="closeMobileNav()">施工事例</a>
+    <a href="#about" onclick="closeMobileNav()">会社概要</a>
+    <a href="#contact" onclick="closeMobileNav()">お問い合わせ</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title">
+        木のぬくもりを感じる<br>
+        <strong>住まいをご提案します</strong>
+      </h1>
+      <p class="hero-desc">
+        昭和42年の創業以来、島根県大田市を中心に<br>
+        地場産の木材を活かした木造住宅の設計・施工を行っています。<br>
+        地域に根差し、あなたの暮らしに寄り添う工務店です。
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">無料相談・お問い合わせ</a>
+        <a href="#works" class="btn-outline">施工事例を見る</a>
+      </div>
+    </div>
+    <div class="hero-scroll"></div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features">
+    <h2 class="section-title reveal">生越工務店が選ばれる<br>3つの理由</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">🌲</div>
+        <h3>地場産木材へのこだわり</h3>
+        <p>島根県産の良質な木材を積極的に使用。木のぬくもりと自然素材ならではの温かみを住まいに活かし、長く愛着を持って暮らせる家をつくります。</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">🏡</div>
+        <h3>創業56年の確かな実績</h3>
+        <p>昭和42年（1967年）の設立以来、大田市を中心に数多くの住宅を手がけてきました。豊富な経験と技術力で、お客様一人ひとりの要望に応えます。</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">🤝</div>
+        <h3>地域密着・きめ細かな対応</h3>
+        <p>大手住宅会社にはできない、地元ならではのきめ細かなサービスをご提供。アフターフォローも充実しており、長いお付き合いを大切にします。</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📐</div>
+        <h3>自由設計の注文住宅</h3>
+        <p>お客様のライフスタイルやご要望を丁寧にヒアリングし、世界にひとつだけのオーダーメイド住宅をご提案します。間取りからデザインまで自由に設計します。</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">🔧</div>
+        <h3>リフォーム・リノベーション</h3>
+        <p>新築だけでなく、増改築や水廻りのリフォームにも対応。古くなった住まいを現代的に蘇らせ、快適な生活空間をご提供します。</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">🌿</div>
+        <h3>省エネ・環境への配慮</h3>
+        <p>自然採光設備による電気代の節減やCO₂削減提案など、環境に優しい住まいづくりを推進。毎月の維持費を抑えた、未来に優しい家をご提案します。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <h2 class="section-title reveal reveal-delay-1">事業内容</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <p class="section-desc reveal reveal-delay-2">木造住宅を中心に、新築からリフォーム・環境設備まで、住まいに関するご要望に幅広くお応えします。</p>
+
+    <div class="services-layout">
+      <div>
+        <div class="service-item reveal">
+          <span class="service-num">01</span>
+          <div class="service-content">
+            <h3>木造住宅 新築工事</h3>
+            <p>地場産木材を活かした木造軸組工法による注文住宅を承ります。お客様の夢と暮らしを形にする、完全自由設計の住まいをご提案します。</p>
+          </div>
+        </div>
+        <div class="service-item reveal reveal-delay-1">
+          <span class="service-num">02</span>
+          <div class="service-content">
+            <h3>リフォーム・増改築</h3>
+            <p>キッチン・浴室・トイレなどの水廻りリフォームから、部屋の増築・間取り変更まで対応。住みながら行えるリフォームも可能です。</p>
+          </div>
+        </div>
+        <div class="service-item reveal reveal-delay-2">
+          <span class="service-num">03</span>
+          <div class="service-content">
+            <h3>スカイライトチューブ</h3>
+            <p>太陽光を室内に導く自然採光システム。電気不要で昼間の明かりを確保でき、CO₂削減・電気代節減に貢献します。暗いお部屋の改善に最適です。</p>
+          </div>
+        </div>
+        <div class="service-item reveal">
+          <span class="service-num">04</span>
+          <div class="service-content">
+            <h3>建物メンテナンス</h3>
+            <p>施工後の定期点検や屋根・外壁のメンテナンスにも対応。長期にわたって住まいを守り、お客様の安心した暮らしをサポートします。</p>
+          </div>
+        </div>
+      </div>
+      <figure class="services-image reveal">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80" alt="木造住宅の施工イメージ">
+        <figcaption>▸ 木のぬくもりを感じる住まいづくり</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works">
+    <h2 class="section-title reveal reveal-delay-1">施工事例</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <p class="section-desc reveal reveal-delay-2">これまでに手がけた住まいの一部をご紹介します。</p>
+
+    <div class="works-grid">
+      <div class="work-card reveal">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="施工事例1">
+        <div class="work-overlay"><span>木造平屋 — 大田市</span></div>
+      </div>
+      <div class="work-card reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="施工事例2">
+        <div class="work-overlay"><span>二階建て注文住宅</span></div>
+      </div>
+      <div class="work-card reveal reveal-delay-2">
+        <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80" alt="施工事例3">
+        <div class="work-overlay"><span>リフォーム — 水廻り</span></div>
+      </div>
+      <div class="work-card reveal">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="施工事例4">
+        <div class="work-overlay"><span>和風の現代住宅</span></div>
+      </div>
+      <div class="work-card reveal reveal-delay-1">
+        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&q=80" alt="施工事例5">
+        <div class="work-overlay"><span>増改築工事</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKYLIGHT BANNER -->
+  <section id="skylight">
+    <div class="skylight-icon">☀️</div>
+    <div class="skylight-content">
+      <h2 class="section-title">スカイライトチューブで<br>自然の光を暮らしに</h2>
+      <p>電気を使わずに太陽光を室内へ導くスカイライトチューブ。暗い廊下や北向きのお部屋にも明るい光を届けます。CO₂削減・電気代節減を実現し、環境にも家計にも優しい省エネ設備です。新築時の導入はもちろん、既存のお住まいへの後付け設置も可能です。</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-image reveal">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="生越工務店の作業風景">
+      <div class="about-badge">
+        <div class="num">56</div>
+        <div class="unit">年の実績</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <h2 class="section-title reveal reveal-delay-1">会社概要</h2>
+      <div class="divider reveal reveal-delay-2"></div>
+      <p class="section-desc reveal reveal-delay-2">昭和42年の創業以来、地域に根差す工務店として大田市の住まいづくりを支えてきました。これからも大田市に根差す企業であり続けます。</p>
+
+      <dl class="about-list reveal">
+        <div class="about-list-item">
+          <dt>会社名</dt>
+          <dd>有限会社 生越工務店</dd>
+        </div>
+        <div class="about-list-item">
+          <dt>設立</dt>
+          <dd>昭和42年（1967年）4月</dd>
+        </div>
+        <div class="about-list-item">
+          <dt>代表者</dt>
+          <dd>生越 朱美</dd>
+        </div>
+        <div class="about-list-item">
+          <dt>所在地</dt>
+          <dd>〒694-0041<br>島根県大田市長久町長久ハ23-1</dd>
+        </div>
+        <div class="about-list-item">
+          <dt>電話</dt>
+          <dd>0854-82-3369</dd>
+        </div>
+        <div class="about-list-item">
+          <dt>営業時間</dt>
+          <dd>平日 8:00〜17:00</dd>
+        </div>
+        <div class="about-list-item">
+          <dt>事業内容</dt>
+          <dd>木造住宅 設計・施工 / リフォーム・増改築 / スカイライトチューブ施工</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title reveal reveal-delay-1">お問い合わせ</h2>
+    <div class="divider reveal reveal-delay-2"></div>
+    <p class="section-desc reveal reveal-delay-2">住まいのご相談は、お気軽にお問い合わせください。<br>お電話・フォームどちらでもお受けしております。</p>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>お電話でのお問い合わせ</h3>
+        <div class="contact-detail">
+          <dt>TEL</dt>
+          <dd>
+            <div class="tel-large">0854-82-3369</div>
+            <small style="color:var(--text-light);font-size:0.78rem;">平日 8:00〜17:00</small>
+          </dd>
+        </div>
+        <div class="contact-detail">
+          <dt>住所</dt>
+          <dd>〒694-0041<br>島根県大田市長久町長久ハ23-1</dd>
+        </div>
+        <div class="contact-detail">
+          <dt>アクセス</dt>
+          <dd>JR大田市駅より徒歩約8分</dd>
+        </div>
+        <div class="contact-detail">
+          <dt>SNS</dt>
+          <dd>
+            <a href="https://www.instagram.com/ogoshikoumuten" target="_blank" rel="noopener">
+              📷 Instagram @ogoshikoumuten
+            </a>
+          </dd>
+        </div>
+      </div>
+
+      <div class="reveal reveal-delay-1">
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name">お名前 <span style="color:var(--accent)">*</span></label>
+            <input type="text" id="name" name="name" placeholder="山田 太郎" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">電話番号</label>
+            <input type="tel" id="phone" name="phone" placeholder="0854-00-0000">
+          </div>
+          <div class="form-group">
+            <label for="email">メールアドレス <span style="color:var(--accent)">*</span></label>
+            <input type="email" id="email" name="email" placeholder="sample@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="category">お問い合わせ種別</label>
+            <select id="category" name="category">
+              <option value="">選択してください</option>
+              <option value="newbuild">新築住宅について</option>
+              <option value="reform">リフォーム・増改築について</option>
+              <option value="skylight">スカイライトチューブについて</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">お問い合わせ内容 <span style="color:var(--accent)">*</span></label>
+            <textarea id="message" name="message" placeholder="ご質問・ご要望をご記入ください" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">送 信 す る</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-main">有限会社 生越工務店</span>
+          <span class="logo-sub">昭和42年創業</span>
+        </div>
+        <p>島根県大田市で昭和42年から地域に根差した工務店として、木のぬくもりある住まいをつくり続けています。</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>目次</h4>
+          <ul>
+            <li><a href="#features">特徴</a></li>
+            <li><a href="#services">事業内容</a></li>
+            <li><a href="#works">施工事例</a></li>
+            <li><a href="#about">会社概要</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>サービス</h4>
+          <ul>
+            <li><a href="#services">木造住宅 新築</a></li>
+            <li><a href="#services">リフォーム</a></li>
+            <li><a href="#services">スカイライトチューブ</a></li>
+            <li><a href="#services">増改築</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 有限会社生越工務店. All Rights Reserved.</span>
+      <div class="footer-snslink">
+        <a href="https://www.instagram.com/ogoshikoumuten" target="_blank" rel="noopener">インスタグラム</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll shadow
+    const header = document.getElementById('mainHeader');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 30);
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    hamburger.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+    function closeMobileNav() {
+      mobileNav.classList.remove('open');
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Form submit
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '送信しました ✓';
+      btn.style.background = 'var(--green)';
+      e.target.reset();
+      setTimeout(() => {
+        btn.textContent = '送 信 す る';
+        btn.style.background = '';
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
