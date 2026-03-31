@@ -31,9 +31,10 @@
       --accent:      #c97d3a;
     }
 
-    html { scroll-behavior: smooth; }
-
-    html { overflow-x: hidden; }
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
     body {
       font-family: 'Noto Serif JP', serif;
@@ -68,7 +69,6 @@
       display: flex; flex-direction: column; line-height: 1.1;
     }
     .logo-main {
-      font-family: 'Noto Serif JP', serif;
       font-size: 1.15rem; font-weight: 700;
       color: var(--wood-dark);
       letter-spacing: 0.08em;
@@ -146,7 +146,6 @@
 
     .hero-inner { position: relative; max-width: 700px; }
     .hero-title {
-      font-family: 'Noto Serif JP', serif;
       font-size: clamp(2rem, 5vw, 3.6rem);
       font-weight: 300; color: var(--white);
       line-height: 1.5; letter-spacing: 0.05em;
@@ -169,7 +168,6 @@
       padding: 0.85rem 2rem; text-decoration: none;
       font-size: 0.85rem; letter-spacing: 0.15em;
       border-radius: 2px; transition: background 0.2s, transform 0.2s;
-      font-family: 'Noto Serif JP', serif;
     }
     .btn-primary:hover { background: var(--wood-light); transform: translateY(-2px); }
     .btn-outline {
@@ -177,7 +175,6 @@
       padding: 0.85rem 2rem; text-decoration: none;
       font-size: 0.85rem; letter-spacing: 0.15em;
       border-radius: 2px; transition: background 0.2s;
-      font-family: 'Noto Serif JP', serif;
     }
     .btn-outline:hover { background: rgba(255,255,255,0.12); }
 
@@ -207,7 +204,6 @@
       margin-bottom: 0.7rem;
     }
     .section-title {
-      font-family: 'Noto Serif JP', serif;
       font-size: clamp(1.6rem, 3vw, 2.3rem);
       font-weight: 600; color: var(--wood-dark);
       line-height: 1.5; margin-bottom: 1.2rem;
@@ -253,7 +249,6 @@
       margin-bottom: 1.5rem; font-size: 1.6rem;
     }
     .feature-card h3 {
-      font-family: 'Noto Serif JP', serif;
       font-size: 1.1rem; font-weight: 600;
       color: var(--wood-dark); margin-bottom: 0.8rem;
       letter-spacing: 0.06em;
@@ -281,13 +276,11 @@
     }
     .service-item:hover { border-color: var(--accent); transform: translateX(4px); }
     .service-num {
-      font-family: 'Noto Serif JP', serif;
       font-size: 2rem; font-weight: 300;
       color: var(--wood-pale); line-height: 1;
       min-width: 48px;
     }
     .service-content h3 {
-      font-family: 'Noto Serif JP', serif;
       font-size: 1.05rem; font-weight: 600;
       color: var(--wood-dark); margin-bottom: 0.5rem;
     }
@@ -339,12 +332,14 @@
     .work-card:hover .work-overlay { opacity: 1; }
     .work-overlay span {
       color: var(--white); font-size: 0.85rem;
-      letter-spacing: 0.1em; font-family: 'Noto Serif JP', serif;
+      letter-spacing: 0.1em;
     }
 
     /* ===== ABOUT ===== */
     #about {
       background: var(--cream);
+    }
+    .about-inner {
       display: grid; grid-template-columns: 1fr 1fr;
       gap: 5rem; align-items: center;
     }
@@ -359,7 +354,6 @@
       min-width: 130px;
     }
     .about-badge .num {
-      font-family: 'Noto Serif JP', serif;
       font-size: 2.5rem; font-weight: 700; line-height: 1;
     }
     .about-badge .unit { font-size: 0.75rem; letter-spacing: 0.1em; opacity: 0.9; }
@@ -400,7 +394,6 @@
       gap: 5rem; margin-top: 4rem;
     }
     .contact-info h3 {
-      font-family: 'Noto Serif JP', serif;
       font-size: 1.3rem; color: var(--wood-dark);
       margin-bottom: 1.5rem;
     }
@@ -419,12 +412,12 @@
     }
     .contact-detail a { color: var(--accent); text-decoration: none; }
     .tel-large {
-      font-family: 'Noto Serif JP', serif;
       font-size: 1.8rem; font-weight: 300;
       color: var(--wood-dark); letter-spacing: 0.05em;
       text-decoration: none; display: block;
     }
     .tel-large:hover { color: var(--accent); }
+    .tel-note { color: var(--text-light); font-size: 0.78rem; display: block; margin-top: 0.2rem; }
 
     .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -438,20 +431,27 @@
       padding: 0.8rem 1rem;
       border: 1px solid var(--wood-pale);
       border-radius: 2px; background: var(--cream);
-      font-family: 'Noto Serif JP', serif;
       font-size: 0.88rem; color: var(--text-dark);
-      outline: none; transition: border-color 0.2s;
+      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
       -webkit-appearance: none;
     }
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus { border-color: var(--accent); }
+    .form-group input:focus-visible,
+    .form-group textarea:focus-visible,
+    .form-group select:focus-visible {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(201,125,58,0.25);
+    }
+    /* グローバルフォーカスリング */
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
     .form-group textarea { min-height: 120px; resize: vertical; }
     .form-submit {
       background: var(--wood-dark); color: var(--white);
       border: none; padding: 1rem; font-size: 0.88rem;
       letter-spacing: 0.2em; cursor: pointer;
-      font-family: 'Noto Serif JP', serif;
       border-radius: 2px; transition: background 0.2s;
     }
     .form-submit:hover { background: var(--wood-mid); }
@@ -539,7 +539,7 @@
       }
       .work-card:first-child { grid-row: span 1; aspect-ratio: 3/4; }
 
-      #about {
+      .about-inner {
         grid-template-columns: 1fr;
         gap: 4rem;
       }
@@ -566,15 +566,15 @@
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#features">本文へスキップ</a>
+  <a class="skip-link" href="#main-content">本文へスキップ</a>
 
   <!-- HEADER -->
   <header id="mainHeader">
-    <div class="logo">
+    <a href="/" class="logo" aria-label="有限会社生越工務店 トップページへ">
       <span class="logo-main">有限会社 生越工務店</span>
       <span class="logo-sub">昭和42年創業</span>
-    </div>
-    <nav>
+    </a>
+    <nav aria-label="メインナビゲーション">
       <a href="#features">特徴</a>
       <a href="#services">事業内容</a>
       <a href="#works">施工事例</a>
@@ -586,14 +586,15 @@
     </button>
   </header>
 
-  <div class="mobile-nav" id="mobileNav">
+  <nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
     <a href="#features" onclick="closeMobileNav()">特徴</a>
     <a href="#services" onclick="closeMobileNav()">事業内容</a>
     <a href="#works" onclick="closeMobileNav()">施工事例</a>
     <a href="#about" onclick="closeMobileNav()">会社概要</a>
     <a href="#contact" onclick="closeMobileNav()">お問い合わせ</a>
-  </div>
+  </nav>
 
+  <main id="main-content">
   <!-- HERO -->
   <section id="hero">
     <div class="hero-inner">
@@ -611,41 +612,41 @@
         <a href="#works" class="btn-outline">施工事例を見る</a>
       </div>
     </div>
-    <div class="hero-scroll"></div>
+    <div class="hero-scroll" aria-hidden="true"></div>
   </section>
 
   <!-- FEATURES -->
-  <section id="features">
-    <h2 class="section-title reveal">地域のお客様に選ばれ続けて<br>59年</h2>
-    <div class="divider reveal reveal-delay-2"></div>
+  <section id="features" aria-labelledby="features-heading">
+    <h2 id="features-heading" class="section-title reveal">地域のお客様に選ばれ続けて<br>59年</h2>
+    <div class="divider reveal reveal-delay-2" aria-hidden="true"></div>
     <div class="features-grid">
       <div class="feature-card reveal">
-        <div class="feature-icon">🌲</div>
+        <div class="feature-icon" aria-hidden="true">🌲</div>
         <h3>地場産木材へのこだわり</h3>
         <p>島根県産の良質な木材を積極的に使用。木のぬくもりと自然素材ならではの温かみを住まいに活かし、長く愛着を持って暮らせる家をつくります。</p>
       </div>
       <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon">🏡</div>
+        <div class="feature-icon" aria-hidden="true">🏡</div>
         <h3>創業59年の確かな実績</h3>
         <p>昭和42年（1967年）の設立以来、大田市を中心に数多くの住宅を手がけてきました。豊富な経験と技術力で、お客様一人ひとりの要望に応えます。</p>
       </div>
       <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon">🤝</div>
+        <div class="feature-icon" aria-hidden="true">🤝</div>
         <h3>地域密着・きめ細かな対応</h3>
         <p>大手住宅会社にはできない、地元ならではのきめ細かなサービスをご提供。アフターフォローも充実しており、長いお付き合いを大切にします。</p>
       </div>
       <div class="feature-card reveal">
-        <div class="feature-icon">📐</div>
+        <div class="feature-icon" aria-hidden="true">📐</div>
         <h3>自由設計の注文住宅</h3>
         <p>お客様のライフスタイルやご要望を丁寧にヒアリングし、世界にひとつだけのオーダーメイド住宅をご提案します。間取りからデザインまで自由に設計します。</p>
       </div>
       <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon">🔧</div>
+        <div class="feature-icon" aria-hidden="true">🔧</div>
         <h3>リフォーム・リノベーション</h3>
         <p>新築だけでなく、増改築や水廻りのリフォームにも対応。古くなった住まいを現代的に蘇らせ、快適な生活空間をご提供します。</p>
       </div>
       <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon">🌿</div>
+        <div class="feature-icon" aria-hidden="true">🌿</div>
         <h3>省エネ・環境への配慮</h3>
         <p>自然採光設備による電気代の節減やCO₂削減提案など、環境に優しい住まいづくりを推進。毎月の維持費を抑えた、未来に優しい家をご提案します。</p>
       </div>
@@ -653,9 +654,9 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services">
-    <h2 class="section-title reveal reveal-delay-1">事業内容</h2>
-    <div class="divider reveal reveal-delay-2"></div>
+  <section id="services" aria-labelledby="services-heading">
+    <h2 id="services-heading" class="section-title reveal reveal-delay-1">事業内容</h2>
+    <div class="divider reveal reveal-delay-2" aria-hidden="true"></div>
     <p class="section-desc reveal reveal-delay-2">木造住宅を中心に、新築からリフォーム・環境設備まで、住まいに関するご要望に幅広くお応えします。</p>
 
     <div class="services-layout">
@@ -697,46 +698,47 @@
   </section>
 
   <!-- WORKS -->
-  <section id="works">
-    <h2 class="section-title reveal reveal-delay-1">施工事例</h2>
-    <div class="divider reveal reveal-delay-2"></div>
+  <section id="works" aria-labelledby="works-heading">
+    <h2 id="works-heading" class="section-title reveal reveal-delay-1">施工事例</h2>
+    <div class="divider reveal reveal-delay-2" aria-hidden="true"></div>
     <p class="section-desc reveal reveal-delay-2">これまでに手がけた住まいの一部をご紹介します。</p>
 
     <div class="works-grid">
       <div class="work-card reveal">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="施工事例1" loading="lazy">
-        <div class="work-overlay"><span>木造平屋 — 大田市</span></div>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="木造平屋 — 大田市" loading="lazy">
+        <div class="work-overlay" aria-hidden="true"><span>木造平屋 — 大田市</span></div>
       </div>
       <div class="work-card reveal reveal-delay-1">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="施工事例2" loading="lazy">
-        <div class="work-overlay"><span>二階建て注文住宅</span></div>
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="二階建て注文住宅" loading="lazy">
+        <div class="work-overlay" aria-hidden="true"><span>二階建て注文住宅</span></div>
       </div>
       <div class="work-card reveal reveal-delay-2">
-        <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80" alt="施工事例3" loading="lazy">
-        <div class="work-overlay"><span>リフォーム — 水廻り</span></div>
+        <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80" alt="リフォーム — 水廻り" loading="lazy">
+        <div class="work-overlay" aria-hidden="true"><span>リフォーム — 水廻り</span></div>
       </div>
       <div class="work-card reveal">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="施工事例4" loading="lazy">
-        <div class="work-overlay"><span>和風の現代住宅</span></div>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="和風の現代住宅" loading="lazy">
+        <div class="work-overlay" aria-hidden="true"><span>和風の現代住宅</span></div>
       </div>
       <div class="work-card reveal reveal-delay-1">
-        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&q=80" alt="施工事例5" loading="lazy">
-        <div class="work-overlay"><span>増改築工事</span></div>
+        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&q=80" alt="増改築工事" loading="lazy">
+        <div class="work-overlay" aria-hidden="true"><span>増改築工事</span></div>
       </div>
     </div>
   </section>
 
   <!-- SKYLIGHT BANNER -->
-  <section id="skylight">
-    <div class="skylight-icon">☀️</div>
+  <section id="skylight" aria-labelledby="skylight-heading">
+    <div class="skylight-icon" aria-hidden="true">☀️</div>
     <div class="skylight-content">
-      <h2 class="section-title">スカイライトチューブで<br>自然の光を暮らしに</h2>
+      <h2 id="skylight-heading" class="section-title">スカイライトチューブで<br>自然の光を暮らしに</h2>
       <p>電気を使わずに太陽光を室内へ導くスカイライトチューブ。暗い廊下や北向きのお部屋にも明るい光を届けます。CO₂削減・電気代節減を実現し、環境にも家計にも優しい省エネ設備です。新築時の導入はもちろん、既存のお住まいへの後付け設置も可能です。</p>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about">
+  <section id="about" aria-labelledby="about-heading">
+    <div class="about-inner">
     <div class="about-image reveal">
       <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="生越工務店の作業風景" loading="lazy">
       <div class="about-badge">
@@ -745,8 +747,8 @@
       </div>
     </div>
     <div class="about-content">
-      <h2 class="section-title reveal reveal-delay-1">会社概要</h2>
-      <div class="divider reveal reveal-delay-2"></div>
+      <h2 id="about-heading" class="section-title reveal reveal-delay-1">会社概要</h2>
+      <div class="divider reveal reveal-delay-2" aria-hidden="true"></div>
       <p class="section-desc reveal reveal-delay-2">昭和42年の創業以来、地域に根差す工務店として大田市の住まいづくりを支えてきました。これからも大田市に根差す企業であり続けます。</p>
 
       <dl class="about-list reveal">
@@ -768,7 +770,7 @@
         </div>
         <div class="about-list-item">
           <dt>電話</dt>
-          <dd>0854-82-3369</dd>
+          <dd><a href="tel:0854823369">0854-82-3369</a></dd>
         </div>
         <div class="about-list-item">
           <dt>営業時間</dt>
@@ -780,12 +782,13 @@
         </div>
       </dl>
     </div>
+    </div><!-- /about-inner -->
   </section>
 
   <!-- CONTACT -->
-  <section id="contact">
-    <h2 class="section-title reveal reveal-delay-1">お問い合わせ</h2>
-    <div class="divider reveal reveal-delay-2"></div>
+  <section id="contact" aria-labelledby="contact-heading">
+    <h2 id="contact-heading" class="section-title reveal reveal-delay-1">お問い合わせ</h2>
+    <div class="divider reveal reveal-delay-2" aria-hidden="true"></div>
     <p class="section-desc reveal reveal-delay-2">住まいのご相談は、お気軽にお問い合わせください。<br>お電話・フォームどちらでもお受けしております。</p>
 
     <div class="contact-grid">
@@ -796,7 +799,7 @@
             <dt>TEL</dt>
             <dd>
               <a href="tel:0854823369" class="tel-large">0854-82-3369</a>
-              <small style="color:var(--text-light);font-size:0.78rem;">平日 8:00〜17:00</small>
+              <small class="tel-note">平日 8:00〜17:00</small>
             </dd>
           </div>
           <div class="contact-detail">
@@ -824,7 +827,7 @@
           <input type="hidden" name="_next" value="">
           <input type="hidden" name="_captcha" value="false">
           <div class="form-group">
-            <label for="name">お名前 <span style="color:var(--accent)">*</span></label>
+            <label for="name">お名前 <span style="color:var(--accent)" aria-hidden="true">*</span></label>
             <input type="text" id="name" name="name" placeholder="山田 太郎" required>
           </div>
           <div class="form-group">
@@ -832,7 +835,7 @@
             <input type="tel" id="phone" name="phone" placeholder="0854-00-0000">
           </div>
           <div class="form-group">
-            <label for="email">メールアドレス <span style="color:var(--accent)">*</span></label>
+            <label for="email">メールアドレス <span style="color:var(--accent)" aria-hidden="true">*</span></label>
             <input type="email" id="email" name="email" placeholder="sample@example.com" required>
           </div>
           <div class="form-group">
@@ -846,7 +849,7 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="message">お問い合わせ内容 <span style="color:var(--accent)">*</span></label>
+            <label for="message">お問い合わせ内容 <span style="color:var(--accent)" aria-hidden="true">*</span></label>
             <textarea id="message" name="message" placeholder="ご質問・ご要望をご記入ください" required></textarea>
           </div>
           <button type="submit" class="form-submit">送 信 す る</button>
@@ -855,14 +858,16 @@
     </div>
   </section>
 
+  </main><!-- /main -->
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="logo">
+        <a href="/" class="logo" aria-label="有限会社生越工務店 トップページへ">
           <span class="logo-main">有限会社 生越工務店</span>
           <span class="logo-sub">昭和42年創業</span>
-        </div>
+        </a>
         <p>島根県大田市で昭和42年から地域に根差した工務店として、木のぬくもりある住まいをつくり続けています。</p>
       </div>
       <div class="footer-links">
