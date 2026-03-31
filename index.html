@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>有限会社生越工務店｜島根県大田市の工務店</title>
+  <meta name="description" content="有限会社生越工務店は島根県大田市で昭和42年創業。地場産木材を活かした木造住宅の設計・施工、リフォーム・増改築、スカイライトチューブの設置に対応します。">
+  <meta property="og:title" content="有限会社生越工務店｜島根県大田市の工務店">
+  <meta property="og:description" content="昭和42年創業。地域に根差した木造住宅の設計・施工、リフォーム・増改築を承ります。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,12 +33,23 @@
 
     html { scroll-behavior: smooth; }
 
+    html { overflow-x: hidden; }
+
     body {
       font-family: 'Noto Serif JP', serif;
       background: var(--cream);
       color: var(--text-dark);
-      overflow-x: hidden;
     }
+
+    /* skip link */
+    .skip-link {
+      position: absolute; top: -100%; left: 1rem;
+      background: var(--wood-dark); color: var(--white);
+      padding: 0.5rem 1rem; font-size: 0.85rem;
+      border-radius: 0 0 4px 4px; z-index: 9999;
+      text-decoration: none; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
 
     /* ===== HEADER ===== */
     header {
@@ -75,14 +93,14 @@
     nav a:hover { color: var(--wood-dark); }
     nav a:hover::after { width: 100%; }
 
-    .nav-cta {
-      background: var(--wood-dark); color: var(--white) !important;
+    nav a.nav-cta {
+      background: var(--wood-dark); color: var(--white);
       padding: 0.45rem 1.2rem; border-radius: 2px;
-      font-size: 0.78rem !important; letter-spacing: 0.12em !important;
-      transition: background 0.2s !important;
+      font-size: 0.78rem; letter-spacing: 0.12em;
+      transition: background 0.2s;
     }
-    .nav-cta::after { display: none !important; }
-    .nav-cta:hover { background: var(--wood-mid) !important; }
+    nav a.nav-cta::after { display: none; }
+    nav a.nav-cta:hover { background: var(--wood-mid); color: var(--white); }
 
     /* hamburger */
     .hamburger {
@@ -404,7 +422,9 @@
       font-family: 'Noto Serif JP', serif;
       font-size: 1.8rem; font-weight: 300;
       color: var(--wood-dark); letter-spacing: 0.05em;
+      text-decoration: none; display: block;
     }
+    .tel-large:hover { color: var(--accent); }
 
     .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
     .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -485,6 +505,16 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+      .hero-title, .hero-desc, .hero-btns { animation: none; opacity: 1; }
+    }
+
     .reveal {
       opacity: 0; transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
@@ -536,6 +566,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#features">本文へスキップ</a>
 
   <!-- HEADER -->
   <header id="mainHeader">
@@ -550,7 +581,7 @@
       <a href="#about">会社概要</a>
       <a href="#contact" class="nav-cta">お問い合わせ</a>
     </nav>
-    <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span><span></span>
     </button>
   </header>
@@ -659,7 +690,7 @@
         </div>
       </div>
       <figure class="services-image reveal">
-        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80" alt="木造住宅の施工イメージ">
+        <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80" alt="木造住宅の施工イメージ" loading="lazy">
         <figcaption>▸ 木のぬくもりを感じる住まいづくり</figcaption>
       </figure>
     </div>
@@ -673,23 +704,23 @@
 
     <div class="works-grid">
       <div class="work-card reveal">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="施工事例1">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="施工事例1" loading="lazy">
         <div class="work-overlay"><span>木造平屋 — 大田市</span></div>
       </div>
       <div class="work-card reveal reveal-delay-1">
-        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="施工事例2">
+        <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="施工事例2" loading="lazy">
         <div class="work-overlay"><span>二階建て注文住宅</span></div>
       </div>
       <div class="work-card reveal reveal-delay-2">
-        <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80" alt="施工事例3">
+        <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=600&q=80" alt="施工事例3" loading="lazy">
         <div class="work-overlay"><span>リフォーム — 水廻り</span></div>
       </div>
       <div class="work-card reveal">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="施工事例4">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="施工事例4" loading="lazy">
         <div class="work-overlay"><span>和風の現代住宅</span></div>
       </div>
       <div class="work-card reveal reveal-delay-1">
-        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&q=80" alt="施工事例5">
+        <img src="https://images.unsplash.com/photo-1513584684374-8bab748fbf90?w=600&q=80" alt="施工事例5" loading="lazy">
         <div class="work-overlay"><span>増改築工事</span></div>
       </div>
     </div>
@@ -707,7 +738,7 @@
   <!-- ABOUT -->
   <section id="about">
     <div class="about-image reveal">
-      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="生越工務店の作業風景">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="生越工務店の作業風景" loading="lazy">
       <div class="about-badge">
         <div class="num">59</div>
         <div class="unit">年の実績</div>
@@ -760,33 +791,38 @@
     <div class="contact-grid">
       <div class="contact-info reveal">
         <h3>お電話でのお問い合わせ</h3>
-        <div class="contact-detail">
-          <dt>TEL</dt>
-          <dd>
-            <div class="tel-large">0854-82-3369</div>
-            <small style="color:var(--text-light);font-size:0.78rem;">平日 8:00〜17:00</small>
-          </dd>
-        </div>
-        <div class="contact-detail">
-          <dt>住所</dt>
-          <dd>〒694-0041<br>島根県大田市長久町長久ハ23-1</dd>
-        </div>
-        <div class="contact-detail">
-          <dt>アクセス</dt>
-          <dd>JR大田市駅より徒歩約8分</dd>
-        </div>
-        <div class="contact-detail">
-          <dt>SNS</dt>
-          <dd>
-            <a href="https://www.instagram.com/ogoshikoumuten" target="_blank" rel="noopener">
-              📷 Instagram @ogoshikoumuten
-            </a>
-          </dd>
-        </div>
+        <dl>
+          <div class="contact-detail">
+            <dt>TEL</dt>
+            <dd>
+              <a href="tel:0854823369" class="tel-large">0854-82-3369</a>
+              <small style="color:var(--text-light);font-size:0.78rem;">平日 8:00〜17:00</small>
+            </dd>
+          </div>
+          <div class="contact-detail">
+            <dt>住所</dt>
+            <dd>〒694-0041<br>島根県大田市長久町長久ハ23-1</dd>
+          </div>
+          <div class="contact-detail">
+            <dt>アクセス</dt>
+            <dd>JR大田市駅より徒歩約8分</dd>
+          </div>
+          <div class="contact-detail">
+            <dt>SNS</dt>
+            <dd>
+              <a href="https://www.instagram.com/ogoshikoumuten" target="_blank" rel="noopener">
+                📷 Instagram @ogoshikoumuten
+              </a>
+            </dd>
+          </div>
+        </dl>
       </div>
 
       <div class="reveal reveal-delay-1">
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form class="contact-form" action="https://formsubmit.co/info@ogoshi-koumuten.jp" method="POST" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="_subject" value="お問い合わせ（生越工務店ホームページ）">
+          <input type="hidden" name="_next" value="">
+          <input type="hidden" name="_captcha" value="false">
           <div class="form-group">
             <label for="name">お名前 <span style="color:var(--accent)">*</span></label>
             <input type="text" id="name" name="name" placeholder="山田 太郎" required>
@@ -870,7 +906,9 @@
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     hamburger.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+      hamburger.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
     });
     function closeMobileNav() {
       mobileNav.classList.remove('open');
